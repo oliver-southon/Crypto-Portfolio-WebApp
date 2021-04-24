@@ -14,6 +14,7 @@ client = Client(api_key, api_secret)
 # get account details
 # print(client.get_account()) 
 
+
 class CoinTools():
 
     def getPrice(self, coin):
@@ -63,7 +64,42 @@ class CoinTools():
             with open(coin+"_bars.json", 'w') as e:
                             json.dump(bars, e)
 
+def main():
+    coinPrompt = "Enter your coin symbol: "
+    shouldContinue = True
+    coin = input(coinPrompt)
+    while shouldContinue:
+        print("""
+        -- {:s} --
+
+         >1. Get price
+         >2. Get balance
+         >3. Create data (csv)   
+         >4. Choose different coin
+         >0. Exit
+        """.format(coin))
+        opt = input("\nChoose an option: ")
+        ct = CoinTools()
+        if opt == "1":
+            print("USD --", ct.getPrice(coin))
+            c = CurrencyConverter()
+            print("AUD --", c.convert(ct.getPrice(coin), "USD", "AUD"))
+        elif opt == "2":
+            print(coin, "--", ct.getBalance(coin))
+            print("AUD", "--", ct.convertAUD(coin))
+        elif opt == "3":
+            try:
+                ct.getHistory(coin)
+                print("File created!")
+            except:
+                print("Error in making file")
+        elif opt == "4":
+            coin = input(coinPrompt)
+        elif opt == "0":
+            shouldContinue = False
+        else:
+            print("Invalid option. Please choose from the selection menu.")
+
+
 if __name__ == "__main__":
-    ct = CoinTools()
-    print(ct.convertAUD("DOGE"))
-    ct.getHistory("DOGE")
+    main()

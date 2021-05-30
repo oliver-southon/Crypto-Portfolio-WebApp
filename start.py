@@ -53,7 +53,7 @@ class CoinTools():
             print(coin_df.head())
 
             # EXPORT TO CSV
-            save_path = './'+coin+'_bars.csv'
+            save_path = './data/'+coin+'_bars.csv'
             if os.path.exists(save_path):
                 os.remove(save_path)
             coin_df.to_csv(save_path)

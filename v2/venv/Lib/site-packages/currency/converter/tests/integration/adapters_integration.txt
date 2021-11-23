@@ -1,0 +1,30 @@
+PortalCurrency
+----
+    >>> from currency.converter.interfaces import IPortalCurrency
+    >>> portal_currency = IPortalCurrency(portal)
+    >>> portal_currency.portal_currency_code
+    'EUR'
+    >>> from Products.CMFCore.utils import getToolByName
+    >>> properties = getToolByName(portal, 'portal_properties')
+    >>> properties.currency_converter_properties.portal_currency = 'USD'
+    >>> portal_currency = IPortalCurrency(portal)
+    >>> portal_currency.portal_currency_code
+    'USD'
+    >>> portal_currency.member_currency_code
+    'EUR'
+    >>> membership = getToolByName(portal, u'portal_membership')
+    >>> member = membership.getAuthenticatedMember()
+    >>> member.getProperty('currency')
+    'EUR'
+    >>> member.setMemberProperties({'currency':'JPY'})
+    >>> portal_currency = IPortalCurrency(portal)
+    >>> portal_currency.member_currency_code
+    'JPY'
+    >>> portal_currency.selected_currency_code
+    'JPY'
+    >>> sdm = getToolByName(portal, "session_data_manager")
+    >>> session = sdm.getSessionData(create=True)
+    >>> session.set('selected_currency_code', 'USD')
+    >>> portal_currency = IPortalCurrency(portal)
+    >>> portal_currency.selected_currency_code
+    'USD'

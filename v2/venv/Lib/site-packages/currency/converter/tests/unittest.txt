@@ -1,0 +1,195 @@
+========================
+ A unit doctest
+========================
+
+Imports
+-------
+    >>> from zope.component import getUtility, provideUtility
+
+CurrencyData
+---------------
+    >>> from currency.converter.currency_data import CurrencyData
+    >>> currency_data = CurrencyData()
+    >>> from currency.converter.interfaces import ICurrencyData
+    >>> ICurrencyData.providedBy(currency_data)
+    True
+
+    >>> import os
+    >>> xml = 'file://' + os.path.join('file://', os.path.dirname(__file__), 'sample-90d.xml')
+    >>> currency_data.currencies
+    >>> currency_data.currency_data(xml)
+    >>> currency_data.currencies[0][0]
+    '2009-08-12'
+    >>> currency_data.date
+    '2009-08-12'
+    >>> currency_data.codes[0]
+    'EUR'
+    >>> len(currency_data.codes)
+    34
+    >>> currency_data.currency_data_list()[0]['code']
+    'EUR'
+    >>> len(currency_data.currency_data_list()[0]['rate'])
+    0
+    >>> len(currency_data.currency_data_list()[1]['rate'])
+    64
+    >>> currency_data.updated_date()
+    '2009-08-12'
+    >>> len(currency_data.currency_codes())
+    34
+    >>> currency_data.currency_code_tuples()[0]
+    ('EUR', (u'Euro', u'\u20ac'))
+    >>> len(currency_data.currency_code_tuples())
+    34
+    >>> len(currency_data.currency_code_data().keys())
+    34
+    >>> len(currency_data.currency_code_data()['USD'])
+    64
+    >>> currency_data.currency_code_data()['USD']
+    ['1.417', '1.4166', '1.4202', '1.4357', '1.437', '1.441', '1.4384', '1.4303', '1.4138', '1.4053', '1.4104', '1.4229', '1.4269', '1.4227', '1.4229', '1.4191', '1.4223', '1.4217', '1.409', '1.413', '1.4089', '1.3991', '1.3975', '1.3901', '1.399', '1.3901', '1.4019', '1.3897', '1.4009', '1.4049', '1.4096', '1.4134', '1.4058', '1.4096', '1.394', '1.4029', '1.3978', '1.3858', '1.3932', '1.392', '1.384', '1.389', '1.385', '1.4004', '1.3969', '1.4102', '1.3959', '1.3866', '1.4177', '1.4095', '1.4207', '1.4238', '1.422', '1.4098', '1.3856', '1.3901', '1.3908', '1.401', '1.3972', '1.3771', '1.369', '1.3612', '1.3494', '1.3518']
+    >>> currency_data.currency_code_average(1)['USD']
+    1.417
+    >>> currency_data.currency_code_average(2)['USD'] == (1.417 + 1.4166) / 2
+    True
+
+
+    >>> provideUtility(currency_data, provides=ICurrencyData)
+
+    >>> len(currency_data.days())
+    64
+    
+
+Check Methods with currency data.
+------------------------------------------
+    >>> currency_data.currencies = [('2008-08-15', {'USD': '1.4729', 'EEK': '15.6466', 'IDR': '13535.95', 'BGN': '1.9558', 'ISK': '121.13', 'GBP': '0.7907', 'DKK': '7.4586', 'SKK': '30.305', 'CAD': '1.5685', 'MXN': '15.0024', 'HUF': '239.45', 'RON': '3.549', 'MYR': '4.9313', 'SEK': '9.355', 'SGD': '2.0845', 'HKD': '11.509', 'AUD': '1.7031', 'CHF': '1.6158', 'KRW': '1531.37', 'CNY': '10.1188', 'TRY': '1.7474', 'HRK': '7.2177', 'NZD': '2.1044', 'LVL': '0.7032', 'THB': '49.872', 'LTL': '3.4528', 'NOK': '7.9665', 'RUB': '36.132', 'JPY': '162.7', 'CZK': '24.485', 'BRL': '2.3994', 'PLN': '3.338', 'PHP': '66.5', 'ZAR': '11.6987'}), ('2008-08-14', {'USD': '1.4907', 'EEK': '15.6466', 'IDR': '13685.37', 'BGN': '1.9558', 'ISK': '120.63', 'GBP': '0.7953', 'DKK': '7.4591', 'SKK': '30.325', 'CAD': '1.5775', 'MXN': '15.1261', 'HUF': '237.28', 'RON': '3.5265', 'MYR': '4.9655', 'SEK': '9.3838', 'SGD': '2.0984', 'HKD': '11.6426', 'AUD': '1.701', 'CHF': '1.6219', 'KRW': '1549.88', 'CNY': '10.2262', 'TRY': '1.766', 'HRK': '7.1874', 'NZD': '2.1197', 'LVL': '0.7035', 'THB': '50.274', 'LTL': '3.4528', 'NOK': '8.006', 'RUB': '36.2275', 'JPY': '163.36', 'CZK': '24.351', 'BRL': '2.3983', 'PLN': '3.309', 'PHP': '66.86', 'ZAR': '11.6461'}), ('2008-08-13', {'USD': '1.4903', 'IDR': '13680.95', 'BGN': '1.9558', 'ISK': '122.3', 'GBP': '0.7942', 'DKK': '7.4594', 'SKK': '30.337', 'CAD': '1.5916', 'MXN': '15.1556', 'HUF': '237.14', 'RON': '3.5463', 'MYR': '4.9441', 'SEK': '9.3771', 'SGD': '2.0931', 'HKD': '11.6362', 'AUD': '1.712', 'CHF': '1.6211', 'KRW': '1549.17', 'CNY': '10.219', 'TRY': '1.7583', 'HRK': '7.2177', 'NZD': '2.1369', 'LVL': '0.7036', 'THB': '50.201', 'LTL': '3.4528', 'NOK': '7.996', 'RUB': '36.1045', 'JPY': '162.05', 'CZK': '23.942', 'BRL': '2.4127', 'PLN': '3.2861', 'PHP': '66.56', 'ZAR': '11.6612'})]
+    >>> codes = [cd['code'] for cd in currency_data.currency_data_list()]
+    >>> codes.sort()
+    >>> codes
+    ['AUD', 'BGN', 'BRL', 'CAD', 'CHF', 'CNY', 'CZK', 'DKK', 'EEK', 'EUR', 'GBP', 'HKD', 'HRK', 'HUF', 'IDR', 'ISK', 'JPY', 'KRW', 'LTL', 'LVL', 'MXN', 'MYR', 'NOK', 'NZD', 'PHP', 'PLN', 'RON', 'RUB', 'SEK', 'SGD', 'SKK', 'THB', 'TRY', 'USD', 'ZAR']
+    >>> currency_data.updated_date()
+    '2008-08-15'
+    >>> cd = currency_data.currency_codes()
+    >>> cd.sort()
+    >>> cd
+    ['AUD', 'BGN', 'BRL', 'CAD', 'CHF', 'CNY', 'CZK', 'DKK', 'EEK', 'EUR', 'GBP', 'HKD', 'HRK', 'HUF', 'IDR', 'ISK', 'JPY', 'KRW', 'LTL', 'LVL', 'MXN', 'MYR', 'NOK', 'NZD', 'PHP', 'PLN', 'RON', 'RUB', 'SEK', 'SGD', 'SKK', 'THB', 'TRY', 'USD', 'ZAR']
+    >>> currency_data.currency_code_data().has_key('USD')
+    True
+    >>> currency_data.currency_code_tuples()[1]
+    ('USD', (u'US Dollar', u'$'))
+    >>> average_usd = (1.4729 + 1.4907 + 1.4903) / 3
+    >>> currency_data.currency_code_average(3).get('USD') == average_usd
+    True
+    >>> average_eek = (15.6466 + 15.6466) / 2
+    >>> currency_data.currency_code_average(3).get('EEK') == average_eek
+    True
+    >>> currency_data.days()
+    [1, 2, 3]
+    >>> currency_data.currency_rate_against_base_code(2, 'EUR').has_key('EUR')
+    False
+    >>> currency_data.currency_rate_against_base_code(2, 'EUR').get('USD') == (1.4729 + 1.4907) / 2
+    True
+    >>> currency_data.currency_rate_against_base_code(2, 'USD').has_key('USD')
+    False
+    >>> currency_data.currency_rate_against_base_code(2, 'USD').get('JPY') == (162.7 + 163.36) / (1.4729 + 1.4907)
+    True
+    >>> currency_data.currency_rate_against_base_code_with_margin(2, 'USD', 5.00).get('JPY') == currency_data.currency_rate_against_base_code(2, 'USD').get('JPY') * (100 + 5.00) / 100
+    True
+    >>> currency_data.currency_rate(2, 5.0, 'EUR', currency_data.currency_code_average(2).get('EUR'), u'USD', currency_data.currency_code_average(2).get('USD') )
+
+-----------------
+Utility tests
+-----------------
+    >>> from currency.converter.interfaces import IRateAgainstBaseRate
+    >>> from currency.converter.currency_data import RateAgainstBaseRate
+    >>> rabr = RateAgainstBaseRate()
+    >>> provideUtility(rabr, provides=IRateAgainstBaseRate)
+    >>> rabru = getUtility(IRateAgainstBaseRate)
+    >>> rabru(1, "EUR", "USD")
+    '1.47'
+    >>> rabru(1, "EUR", "EUR")
+
+    >>> from currency.converter.interfaces import ICurrencyCodeName
+    >>> from currency.converter.currency_data import CurrencyCodeName
+    >>> currency_code_name = CurrencyCodeName()
+    >>> provideUtility(currency_code_name, provides=ICurrencyCodeName)
+    >>> currency_code_name_utility = getUtility(ICurrencyCodeName)
+    >>> len(currency_code_name_utility())
+    35
+    >>> {'code': 'USD', 'name': u'US Dollar'} in currency_code_name_utility()
+    True
+
+    >>> from currency.converter.interfaces import ICurrencyCodeNameTuples
+    >>> from currency.converter.currency_data import CurrencyCodeNameTuples
+    >>> currency_code_name_tuples = CurrencyCodeNameTuples()
+    >>> provideUtility(currency_code_name_tuples, provides=ICurrencyCodeNameTuples)
+    >>> currency_code_name_tuples_utility = getUtility(ICurrencyCodeNameTuples)
+    >>> len(currency_code_name_tuples_utility())
+    35
+    >>> ('USD', u'US Dollar') in currency_code_name_tuples_utility()
+    True
+
+    >>> from currency.converter.utility.vocabulary import CurrencyVocabularyFactory
+    >>> class Mock(object):
+    ...     def __init__(self, **kwargs):
+    ...         for k, v in kwargs.items(): setattr(self, k, v)
+
+    >>> portal = Mock()
+    >>> context = Mock(portal_url=Mock(getPortalObject=lambda: portal))
+    >>> currency_vocabulary_factory = CurrencyVocabularyFactory(context)
+    >>> currency_vocabulary_factory
+    <zope.schema.vocabulary.SimpleVocabulary object at ...>
+    >>> from zope.schema.interfaces import IVocabularyFactory
+    >>> provideUtility(currency_vocabulary_factory, provides=IVocabularyFactory, name="currency.converter.CurrencyCodeName")
+    >>> currency_code_name_factory = getUtility(IVocabularyFactory, u"currency.converter.CurrencyCodeName")
+    >>> from zope.schema.interfaces import IVocabularyTokenized
+    >>> IVocabularyTokenized.providedBy(currency_code_name_factory)
+    True
+    >>> eur = currency_code_name_factory.getTermByToken('EUR')
+    >>> eur.value
+    'EUR'
+    >>> eur.token
+    'EUR'
+    >>> from zope.schema.interfaces import ITitledTokenizedTerm
+    >>> from zope.interface import alsoProvides
+    >>> ITitledTokenizedTerm.providedBy(eur)
+    True
+    >>> eur.title
+    u'Euro'
+
+CurrencyCodeDecimal
+----
+    >>> from currency.converter.utility.currencies import CurrencyCodeDecimal
+    >>> currency_code_decimal = CurrencyCodeDecimal()
+    >>> from currency.converter.interfaces import ICurrencyCodeDecimal
+    >>> ICurrencyCodeDecimal.providedBy(currency_code_decimal)
+    True
+    >>> provideUtility(currency_code_decimal, provides=ICurrencyCodeDecimal)
+    >>> ccd = getUtility(ICurrencyCodeDecimal)()
+    >>> ccd.get('EUR')
+    2
+    >>> ccd.get('JPY')
+    0
+
+
+DecimalPrice
+----
+    >>> from currency.converter.utility.price import DecimalPrice
+    >>> decimal_price = DecimalPrice()
+    >>> from currency.converter.interfaces import IDecimalPrice
+    >>> IDecimalPrice.providedBy(decimal_price)
+    True
+    >>> provideUtility(decimal_price, provides=IDecimalPrice)
+    >>> dp = getUtility(IDecimalPrice)
+    >>> dp(1.00, 2)
+    Decimal('1.00')
+    >>> dp(1.00, 1)
+    1 is not valid number. Use either 0 or 2.
+    >>> dp(1.00, 0)
+    Decimal('1')
+    >>> dp(1.0045, 2)
+    Decimal('1.01')
+    >>> dp(1.045, 0)
+    Decimal('1')
+    >>> dp(1.4, 0)
+    Decimal('1')
+    >>> dp(1.45, 0)
+    Decimal('2')

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<componentregistry>
+  <utilities>
+    <utility
+      interface="currency.converter.interfaces.ICurrencyData"
+      factory="currency.converter.currency_data.CurrencyData"
+      remove="True"
+      />
+    <utility
+      interface="currency.converter.interfaces.IRateAgainstBaseRate"
+      factory="currency.converter.currency_data.RateAgainstBaseRate"
+      remove="True"
+      />
+  </utilities>
+</componentregistry>

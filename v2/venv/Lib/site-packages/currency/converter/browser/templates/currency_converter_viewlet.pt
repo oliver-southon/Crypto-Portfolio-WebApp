@@ -1,0 +1,66 @@
+<!-- Currency Converter Viewlet -->
+<div i18n:domain="currency.converter">
+  <h1 i18n:translate="">Currency Converter</h1>
+
+  <p tal:condition="not:view/currency_data" 
+     i18n:translate="no_currency_data_available">
+    There are no currency data available.
+  </p>
+
+  <div tal:condition="view/currency_data">
+    <p>
+      <span i18n:translate="">Updated on</span> : <span tal:replace="view/updated_date" />
+    </p>
+    <form method="post"
+          tal:attributes="action view/view_url">
+      <input type="text" size="7" name="base_currency_rate"
+             tal:attributes="value view/base_currency_rate"
+             tal:condition="not: view/float_error_message" />
+      <div tal:condition="view/float_error_message" class="red_caution">
+        <input type="text" size="7" name="base_currency_rate"
+               tal:attributes="value view/base_currency_rate" />
+        <br />
+        <span tal:replace="view/float_error_message" />
+      </div>
+      <select name="base_currency_code" id="base_currency_code">
+        <tal:block tal:repeat="cct view/currency_code_tuples"
+                   tal:define="sc view/selected_base_currency_code">
+          <option value="None"
+                  tal:content="python:cct[1][0]"
+                  tal:attributes="value python:cct[0];
+                                  selected python: cct[0] == sc">
+          </option>
+        </tal:block>
+      </select>
+<!--      &nbsp;&raquo;&raquo;&nbsp;-->
+      <img tal:attributes="src context/++resource++currency.converter.images/right_arrow.png" />
+      <select name="currency_code" id="currency_code">
+        <tal:block tal:repeat="cct view/currency_code_tuples"
+                   tal:define="sc view/selected_currency_code">
+          <option value="None"
+                  tal:content="python:cct[1][0]"
+                  tal:attributes="value python:cct[0];
+                                  selected python: cct[0] == sc">
+          </option>
+        </tal:block>
+      </select>
+      <input class="context"
+             type="submit"
+             id="form.button.Convert"
+             value="Convert"
+             name="form.button.Convert"
+             i18n:attributes="value"/>
+      <br />
+      <p tal:content="view/error_message" />
+    </form>
+
+    <p tal:condition="view/calculated_rate">
+      <span tal:replace="view/base_currency_rate" />
+      <span tal:replace="view/selected_base_currency_code" />
+      &nbsp;&#61;&nbsp;
+      <span tal:replace="view/calculated_rate" />
+      <span tal:replace="view/selected_currency_code" />
+    </p>
+
+  </div>
+</div>

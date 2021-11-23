@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="currency.converter">
+  <portlet addview="currency_converter.portlet"
+           title="Currency Converter"
+           description="A portlet which shows currency converter.">
+    <for interface="plone.app.portlets.interfaces.IColumn" /> 
+    <for interface="plone.app.portlets.interfaces.IDashboard" />
+  </portlet>
+  <!--
+  <assignment manager="plone.leftcolumn"
+              category="context"
+              key="/"
+              type="currency.converter"
+              name="Currency Converter" /> 
+  -->
+</portlets>

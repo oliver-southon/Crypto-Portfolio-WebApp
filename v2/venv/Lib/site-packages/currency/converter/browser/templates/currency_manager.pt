@@ -1,0 +1,104 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="currency.converter">
+  <body>
+    <metal:main fill-slot="main">
+      <form method="post"
+            tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+
+        <p>
+          <span i18n:translate="">Updated on</span> : <span tal:content="view/updated_date" />
+        </p>
+
+        <table class="vertical listing">
+          <tbody>
+            <tr>
+              <th>
+                <span i18n:translate="Base Currency">Base Currency</span>
+              </th>
+              <td>
+                <select name="currency_code" id="currency_code">
+                  <tal:block tal:repeat="cct view/currency_code_tuples"
+                             tal:define="sc view/selected_currency">
+                    <option value="None"
+                            tal:content="python:cct[1][0]"
+                            tal:attributes="value python:cct[0];
+                                            selected python: cct[0] == sc">
+                    </option>
+                  </tal:block>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <span i18n:translate="Days for Average">Days for Average</span>
+              </th>
+              <td>
+                <select name="days" id="days">
+                  <tal:block tal:repeat="days view/days"
+                             tal:define="sd view/selected_days">
+                    <option value="None"
+                            tal:content="days"
+                            tal:attributes="value days;
+                                            selected python: days == int(sd)">
+                    </option>
+                  </tal:block>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <span i18n:translate="Margin">Margin</span>
+              </th>
+              <td>
+                <input type="text" size="3" name="margin"
+                       tal:attributes="value view/margin" />%
+                <span tal:condition="view/error_message">
+                  <br />
+                  <span tal:replace="view/error_message" />
+                </span>
+              </td>
+            </tr>
+          <tbody>
+        </table>
+
+
+
+        <input class="context"
+               type="submit"
+               id="form.button.Update"
+               value="Update"
+               name="form.button.Update"
+               i18n:attributes="value"/>
+
+        <table class="listing">
+          <thead>
+            <tr>
+              <th i18n:translate="Currency">
+                Currency
+              </th>
+              <th i18n:translate="Rate">
+                Rate
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr tal:repeat="cr view/currency_rate">
+              <td>
+                <span tal:replace="python:cr[0]" />
+              </td>
+              <td>
+                <span tal:replace="python:cr[1]" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </form>
+    </metal:main>
+  </body>
+</html>

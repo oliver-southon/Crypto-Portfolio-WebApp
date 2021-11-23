@@ -1,0 +1,15 @@
+<!-- configure.zcml for adapter directory -->
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="currency.converter">
+
+  <adapter factory=".portal.PortalCurrency"
+           for="*" />
+<!--  <adapter factory=".facility.Facilities"-->
+<!--           for="*" />-->
+<!--  <adapter factory=".stay_place.StayPlaceInfo"-->
+<!--           for="*" />-->
+<!--  <adapter factory=".portal.ReservationInfo"-->
+<!--           for="*" />-->
+
+</configure>

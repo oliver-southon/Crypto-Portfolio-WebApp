@@ -1,0 +1,11 @@
+<!-- configure.zcml for utility directory of currency.converter -->
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five">
+  <utility
+      component=".vocabulary.CurrencyVocabularyFactory"
+      name="currency.converter.CurrencyCodeName"
+      />
+  <utility factory=".price.DecimalPrice" />
+  <utility factory=".currencies.CurrencyCodeDecimal" />
+</configure>

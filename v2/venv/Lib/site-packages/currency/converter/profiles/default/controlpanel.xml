@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="currency.converter"
+        name="portal_controlpanel">
+ <configlet title="Currency Manager" action_id="currency_manager" appId="Plone"
+    category="Products" condition_expr=""
+    url_expr="string:${portal_url}/@@manage-currency" visible="True"
+    i18n:attributes="title">
+  <permission>Manage portal</permission>
+ </configlet>
+</object>

@@ -1,0 +1,18 @@
+<!-- Configure currency converter portlet. -->
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="currency.converter">
+
+    <!-- Ensure Plone's portlets ZCML has already been processed; without
+         this, we may get a permission lookup error
+      -->
+  <include package="plone.app.portlets" />
+
+  <plone:portlet name="currency_converter.portlet"
+                 interface=".currency_converter.ICurrencyConverterPortlet"
+                 assignment=".currency_converter.Assignment"
+                 renderer=".currency_converter.Renderer"
+                 addview=".currency_converter.AddForm" />
+
+</configure>

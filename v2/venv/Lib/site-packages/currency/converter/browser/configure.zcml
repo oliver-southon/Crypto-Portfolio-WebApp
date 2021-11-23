@@ -1,0 +1,54 @@
+<!-- Currency Converter Browser configures. -->
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="currency.converter">
+
+  <!-- Resource directory for images -->
+  <browser:resourceDirectory
+    name="currency.converter.images"
+    directory="images"
+    />
+
+  <!-- Register pages -->
+  <browser:page
+    for="Products.CMFCore.interfaces.ISiteRoot"
+    name="manage-currency"
+    class=".currency_manager.CurrencyManagerView"
+    permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+    for="*"
+    name="get-currency"
+    class=".currency_manager.CurrencyManagerView"
+    attribute="get_currency"
+    permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+    for="*"
+    name="currency-converter"
+    class=".currency_converter.CurrencyConverterView"
+    permission="zope2.View"
+    />
+
+    <!-- Register viewlet managers -->
+
+    <browser:viewletManager
+        name="currency.converter.viewletManager"
+        provides=".viewlet_manager.ICurrencyConverter"
+        permission="zope2.View"
+        class="plone.app.viewletmanager.manager.BaseOrderedViewletManager"
+        />
+
+    <!-- Register viewlets -->
+
+     <browser:viewlet
+         name="currency.converter.viewlet"
+         manager=".viewlet_manager.ICurrencyConverter"
+         class=".currency_converter_viewlet.CurrencyConverterViewlet"
+         permission="zope2.View"
+         />
+
+</configure>

@@ -1,0 +1,4 @@
+
+☐ V3.0 - Ability to add new portfolios
+
+☐ V4.0 - Abaility to link with your own binance API (hence available for public use)

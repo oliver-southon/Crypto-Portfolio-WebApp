@@ -1,0 +1,832 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2009-08-13 17:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: currency.converter\n"
+
+#: ../converter/currencies.py:10
+msgid "Afghani"
+msgstr ""
+
+#: ../converter/currencies.py:11
+msgid "Albanian Lek"
+msgstr ""
+
+#: ../converter/currencies.py:51
+msgid "Algerian Dinar"
+msgstr ""
+
+#: ../converter/currencies.py:14
+msgid "Angola Kwanza"
+msgstr ""
+
+#: ../converter/currencies.py:15
+msgid "Argentine Peso"
+msgstr ""
+
+#: ../converter/currencies.py:12
+msgid "Armenian Dram"
+msgstr ""
+
+#: ../converter/currencies.py:17
+msgid "Aruban Guilder"
+msgstr ""
+
+#: ../converter/currencies.py:16
+msgid "Australian Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:18
+msgid "Azerbaijanian New Manats"
+msgstr ""
+
+#: ../converter/currencies.py:31
+msgid "Bahamian Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:24
+msgid "Bahraini Dinar"
+msgstr ""
+
+#: ../converter/currencies.py:21
+msgid "Bangladeshi Taka"
+msgstr ""
+
+#: ../converter/currencies.py:20
+msgid "Barbados Dollar"
+msgstr ""
+
+#. Default: "Base Currency"
+#: ../converter/browser/templates/currency_manager.pt:21
+msgid "Base Currency"
+msgstr ""
+
+#: ../converter/currencies.py:34
+msgid "Belarussian Rouble"
+msgstr ""
+
+#: ../converter/currencies.py:35
+msgid "Belize Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:26
+msgid "Bermudian Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:32
+msgid "Bhutan Ngultrum"
+msgstr ""
+
+#: ../converter/currencies.py:29
+msgid "Bolivian Mvdol"
+msgstr ""
+
+#: ../converter/currencies.py:28
+msgid "Boliviano"
+msgstr ""
+
+#: ../converter/currencies.py:174
+msgid "Bond Markets Units"
+msgstr ""
+
+#: ../converter/currencies.py:33
+msgid "Botswana Pula"
+msgstr ""
+
+#: ../converter/currencies.py:30
+msgid "Brazilian Real"
+msgstr ""
+
+#: ../converter/currencies.py:27
+msgid "Brunei Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:22
+msgid "Bulgarian Lev"
+msgstr ""
+
+#: ../converter/currencies.py:25
+msgid "Burundi Franc"
+msgstr ""
+
+#: ../converter/currencies.py:180
+msgid "CFA Franc BCEAO"
+msgstr ""
+
+#: ../converter/currencies.py:171
+msgid "CFA Franc BEAC"
+msgstr ""
+
+#: ../converter/currencies.py:182
+msgid "CFP Franc"
+msgstr ""
+
+#: ../converter/currencies.py:85
+msgid "Cambodian Riel"
+msgstr ""
+
+#: ../converter/currencies.py:36
+msgid "Canadian Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:45
+msgid "Cap Verde Escudo"
+msgstr ""
+
+#: ../converter/currencies.py:90
+msgid "Cayman Islands Dollar"
+msgstr ""
+
+#. Default: "Check Currencies"
+#: ../converter/portlets/currency_converter.pt:69
+msgid "Check Currencies"
+msgstr ""
+
+#: ../converter/currencies.py:40
+msgid "Chilean Peso"
+msgstr ""
+
+#: ../converter/currencies.py:41
+msgid "Chinese Yuan Renminbi"
+msgstr ""
+
+#: ../converter/currencies.py:184
+msgid "Code for testing purposes"
+msgstr ""
+
+#: ../converter/currencies.py:42
+msgid "Colombian Peso"
+msgstr ""
+
+#: ../converter/currencies.py:86
+msgid "Comoro Franc"
+msgstr ""
+
+#. Default: "Convert"
+#: ../converter/browser/templates/currency_converter_viewlet.pt:40
+msgid "Convert"
+msgstr ""
+
+#: ../converter/currencies.py:19
+msgid "Convertible Marks"
+msgstr ""
+
+#: ../converter/currencies.py:43
+msgid "Costa Rican Colon"
+msgstr ""
+
+#: ../converter/currencies.py:71
+msgid "Croatian Kuna"
+msgstr ""
+
+#: ../converter/currencies.py:44
+msgid "Cuban Peso"
+msgstr ""
+
+#. Default: "Currency"
+#: ../converter/browser/templates/currency_manager.pt:81
+msgid "Currency"
+msgstr ""
+
+#. Default: "Currency Converter"
+#: ../converter/browser/templates/currency_converter_viewlet.pt:3
+msgid "Currency Converter"
+msgstr ""
+
+#. Default: "Currency Manager"
+#: ../converter/profiles/default/controlpanel.xml
+msgid "Currency Manager"
+msgstr ""
+
+#. Default: "Currency Name"
+#: ../converter/browser/templates/currency_converter.pt:16
+msgid "Currency Name"
+msgstr ""
+
+#. Default: "Currency Rate Updated on"
+#: ../converter/portlets/currency_converter.pt:56
+msgid "Currency Rate Updated on"
+msgstr ""
+
+#. Default: "Currency Unit"
+#: ../converter/browser/templates/currency_converter.pt:15
+msgid "Currency Unit"
+msgstr ""
+
+#. Default: "Currency Unit and Name List"
+#: ../converter/browser/templates/currency_converter.pt:11
+msgid "Currency Unit and Name List"
+msgstr ""
+
+#: ../converter/currencies.py:46
+msgid "Cyprus Pound"
+msgstr ""
+
+#: ../converter/currencies.py:47
+msgid "Czech Koruna"
+msgstr ""
+
+#: ../converter/currencies.py:49
+msgid "Danish Krone"
+msgstr ""
+
+#. Default: "Days for Average"
+#: ../converter/browser/templates/currency_manager.pt:38
+msgid "Days for Average"
+msgstr ""
+
+#: ../converter/currencies.py:48
+msgid "Djibouti Franc"
+msgstr ""
+
+#: ../converter/currencies.py:50
+msgid "Dominican Peso"
+msgstr ""
+
+#: ../converter/currencies.py:178
+msgid "East Caribean Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:54
+msgid "Egyptian Pound"
+msgstr ""
+
+#: ../converter/currencies.py:147
+msgid "El Salvador Colon"
+msgstr ""
+
+#: ../converter/currencies.py:55
+msgid "Eritrean Nakfa"
+msgstr ""
+
+#: ../converter/currencies.py:53
+msgid "Estonia Kroon"
+msgstr ""
+
+#: ../converter/currencies.py:56
+msgid "Ethiopian Birr"
+msgstr ""
+
+#: ../converter/currencies.py:57
+msgid "Euro"
+msgstr ""
+
+#: ../converter/currencies.py:175
+msgid "European Composite Unit EURCO"
+msgstr ""
+
+#: ../converter/currencies.py:176
+msgid "European Monetary Unit EUM"
+msgstr ""
+
+#: ../converter/currencies.py:177
+msgid "European Unit of Account EUA"
+msgstr ""
+
+#: ../converter/currencies.py:59
+msgid "Falkland Island Pound"
+msgstr ""
+
+#: ../converter/currencies.py:58
+msgid "Fiji Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:37
+msgid "Franc Congolais"
+msgstr ""
+
+#: ../converter/currencies.py:64
+msgid "Gambian Dalasi"
+msgstr ""
+
+#: ../converter/currencies.py:61
+msgid "Georgian Lari"
+msgstr ""
+
+#: ../converter/currencies.py:62
+msgid "Ghanaian Cedi"
+msgstr ""
+
+#: ../converter/currencies.py:63
+msgid "Gibraltar Pound"
+msgstr ""
+
+#: ../converter/currencies.py:173
+msgid "Gold"
+msgstr ""
+
+#: ../converter/currencies.py:66
+msgid "Guatemalan Quetzal"
+msgstr ""
+
+#: ../converter/currencies.py:65
+msgid "Guinea Franc"
+msgstr ""
+
+#: ../converter/currencies.py:67
+msgid "Guinea-Bissau Peso"
+msgstr ""
+
+#: ../converter/currencies.py:68
+msgid "Guyana Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:72
+msgid "Haitian Gourde"
+msgstr ""
+
+#: ../converter/currencies.py:70
+msgid "Honduran Lempira"
+msgstr ""
+
+#: ../converter/currencies.py:69
+msgid "Hong Kong Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:73
+msgid "Hungarian Forint"
+msgstr ""
+
+#: ../converter/currencies.py:79
+msgid "Iceland Krona"
+msgstr ""
+
+#. Default: "In this site..."
+#: ../converter/portlets/currency_converter.pt:16
+msgid "In this site..."
+msgstr ""
+
+#: ../converter/currencies.py:76
+msgid "Indian Rupee"
+msgstr ""
+
+#: ../converter/currencies.py:74
+msgid "Indonesian Rupiah"
+msgstr ""
+
+#: ../converter/currencies.py:78
+msgid "Iranian Rial"
+msgstr ""
+
+#: ../converter/currencies.py:77
+msgid "Iraqi Dinar"
+msgstr ""
+
+#: ../converter/currencies.py:75
+msgid "Israeli Shekel"
+msgstr ""
+
+#: ../converter/currencies.py:80
+msgid "Jamaican Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:82
+msgid "Japanese Yen"
+msgstr ""
+
+#: ../converter/currencies.py:81
+msgid "Jordanian Dinar"
+msgstr ""
+
+#: ../converter/currencies.py:91
+msgid "Kazakhstan Tenge"
+msgstr ""
+
+#: ../converter/currencies.py:83
+msgid "Kenyan Shilling"
+msgstr ""
+
+#: ../converter/currencies.py:89
+msgid "Kuwaiti Dinar"
+msgstr ""
+
+#: ../converter/currencies.py:84
+msgid "Kyrgyzstan Som"
+msgstr ""
+
+#: ../converter/currencies.py:92
+msgid "Lao Kip"
+msgstr ""
+
+#: ../converter/currencies.py:98
+msgid "Latvian Lats"
+msgstr ""
+
+#: ../converter/currencies.py:93
+msgid "Lebanese Pound"
+msgstr ""
+
+#: ../converter/currencies.py:143
+msgid "Leone"
+msgstr ""
+
+#: ../converter/currencies.py:96
+msgid "Lesotho Loti"
+msgstr ""
+
+#: ../converter/currencies.py:95
+msgid "Liberian Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:99
+msgid "Libyan Dinar"
+msgstr ""
+
+#: ../converter/currencies.py:97
+msgid "Lithuanian Litas"
+msgstr ""
+
+#: ../converter/currencies.py:106
+msgid "Macao Patacca"
+msgstr ""
+
+#: ../converter/currencies.py:103
+msgid "Macedonian Denar"
+msgstr ""
+
+#: ../converter/currencies.py:102
+msgid "Malagasy Franc"
+msgstr ""
+
+#: ../converter/currencies.py:111
+msgid "Malawi Kwacha"
+msgstr ""
+
+#: ../converter/currencies.py:114
+msgid "Malaysian Ringgit"
+msgstr ""
+
+#: ../converter/currencies.py:110
+msgid "Maldive Rufiyaa"
+msgstr ""
+
+#: ../converter/currencies.py:108
+msgid "Maltese Lira"
+msgstr ""
+
+#. Default: "Margin"
+#: ../converter/browser/templates/currency_manager.pt:55
+msgid "Margin"
+msgstr ""
+
+#: ../converter/currencies.py:107
+msgid "Mauritanian Ouguiya"
+msgstr ""
+
+#: ../converter/currencies.py:109
+msgid "Mauritius Rupee"
+msgstr ""
+
+#: ../converter/currencies.py:112
+msgid "Mexican Peso"
+msgstr ""
+
+#: ../converter/currencies.py:101
+msgid "Moldovan Leu"
+msgstr ""
+
+#: ../converter/currencies.py:105
+msgid "Mongolian Tugrik"
+msgstr ""
+
+#: ../converter/currencies.py:100
+msgid "Moroccan Dirham"
+msgstr ""
+
+#: ../converter/currencies.py:115
+msgid "Mozambique Metical"
+msgstr ""
+
+#: ../converter/currencies.py:104
+msgid "Myanmar Kyat"
+msgstr ""
+
+#: ../converter/currencies.py:116
+msgid "Namibian Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:120
+msgid "Nepalese Rupee"
+msgstr ""
+
+#: ../converter/currencies.py:13
+msgid "Netherlands Antillian Guilder"
+msgstr ""
+
+#: ../converter/currencies.py:158
+msgid "New Taiwan Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:121
+msgid "New Zealand Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:118
+msgid "Nicaraguan Cordoba Oro"
+msgstr ""
+
+#: ../converter/currencies.py:117
+msgid "Nigerian Naira"
+msgstr ""
+
+#: ../converter/currencies.py:87
+msgid "North Korean Won"
+msgstr ""
+
+#: ../converter/currencies.py:119
+msgid "Norwegian Krone"
+msgstr ""
+
+#: ../converter/currencies.py:127
+msgid "Pakistan Rupee"
+msgstr ""
+
+#: ../converter/currencies.py:181
+msgid "Palladium"
+msgstr ""
+
+#: ../converter/currencies.py:123
+msgid "Panamanian Balboa"
+msgstr ""
+
+#: ../converter/currencies.py:125
+msgid "Papua New Guinea Kina"
+msgstr ""
+
+#: ../converter/currencies.py:129
+msgid "Paraguay Guarani"
+msgstr ""
+
+#: ../converter/currencies.py:124
+msgid "Peruvian Nuevo Sol"
+msgstr ""
+
+#: ../converter/currencies.py:165
+msgid "Peso Uruguayo"
+msgstr ""
+
+#: ../converter/currencies.py:126
+msgid "Phillipine Peso"
+msgstr ""
+
+#: ../converter/currencies.py:183
+msgid "Platinum"
+msgstr ""
+
+#: ../converter/browser/currency_converter.py:73
+msgid "Please choose different currencies."
+msgstr ""
+
+#: ../converter/browser/currency_manager.py:59
+msgid "Please input float like 5.00"
+msgstr ""
+
+#: ../converter/currencies.py:128
+msgid "Polish Złoty"
+msgstr ""
+
+#: ../converter/currencies.py:60
+msgid "Pound Sterling"
+msgstr ""
+
+#: ../converter/currencies.py:130
+msgid "Qatari Riyal"
+msgstr ""
+
+#. Default: "Rate"
+#: ../converter/browser/templates/currency_manager.pt:84
+msgid "Rate"
+msgstr ""
+
+#: ../converter/currencies.py:122
+msgid "Rial Omani"
+msgstr ""
+
+#: ../converter/currencies.py:131
+msgid "Romanian Leu"
+msgstr ""
+
+#: ../converter/currencies.py:132
+msgid "Russian Rouble"
+msgstr ""
+
+#: ../converter/currencies.py:133
+msgid "Rwanda Franc"
+msgstr ""
+
+#: ../converter/currencies.py:140
+msgid "Saint Helena Pound"
+msgstr ""
+
+#: ../converter/currencies.py:170
+msgid "Samoan Tala"
+msgstr ""
+
+#: ../converter/currencies.py:146
+msgid "Sao Tome and Principe Dobra"
+msgstr ""
+
+#: ../converter/currencies.py:134
+msgid "Saudi Riyal"
+msgstr ""
+
+#: ../converter/currencies.py:136
+msgid "Seychelles Rupee"
+msgstr ""
+
+#: ../converter/currencies.py:172
+msgid "Silver"
+msgstr ""
+
+#: ../converter/currencies.py:139
+msgid "Singapur Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:142
+msgid "Slovak Koruna"
+msgstr ""
+
+#: ../converter/currencies.py:141
+msgid "Slovenian Tolar"
+msgstr ""
+
+#: ../converter/currencies.py:135
+msgid "Solomon Islands Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:144
+msgid "Somali Schilling"
+msgstr ""
+
+#: ../converter/currencies.py:187
+msgid "South African Rand"
+msgstr ""
+
+#: ../converter/currencies.py:88
+msgid "South Korean Won"
+msgstr ""
+
+#: ../converter/currencies.py:179
+msgid "Special Drawing Right"
+msgstr ""
+
+#: ../converter/currencies.py:94
+msgid "Sri Lanka Rupee"
+msgstr ""
+
+#: ../converter/currencies.py:137
+msgid "Sudanese Dinar"
+msgstr ""
+
+#: ../converter/currencies.py:145
+msgid "Suriname Guilder"
+msgstr ""
+
+#: ../converter/currencies.py:149
+msgid "Swaziland Lilangeni"
+msgstr ""
+
+#: ../converter/currencies.py:138
+msgid "Swedish Krona"
+msgstr ""
+
+#: ../converter/currencies.py:38
+msgid "Swiss Franc"
+msgstr ""
+
+#: ../converter/currencies.py:148
+msgid "Syrian Pound"
+msgstr ""
+
+#: ../converter/currencies.py:151
+msgid "Tajik Somoni"
+msgstr ""
+
+#: ../converter/currencies.py:159
+msgid "Tazanian Schilling"
+msgstr ""
+
+#: ../converter/currencies.py:150
+msgid "Thai Baht"
+msgstr ""
+
+#: ../converter/currencies.py:152
+msgid "Timor Escudo"
+msgstr ""
+
+#: ../converter/currencies.py:155
+msgid "Tongan Pa'anga"
+msgstr ""
+
+#: ../converter/currencies.py:157
+msgid "Trinidad and Tobago Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:154
+msgid "Tunisian Dinar"
+msgstr ""
+
+#: ../converter/currencies.py:156
+msgid "Turkish Lira"
+msgstr ""
+
+#: ../converter/currencies.py:153
+msgid "Turkmenistan Manat"
+msgstr ""
+
+#: ../converter/currencies.py:9
+msgid "UAE Dirham"
+msgstr ""
+
+#: ../converter/currencies.py:162
+msgid "US Dollar"
+msgstr ""
+
+#: ../converter/currencies.py:163
+msgid "US Dollar (Next day)"
+msgstr ""
+
+#: ../converter/currencies.py:164
+msgid "US Dollar (Same day)"
+msgstr ""
+
+#: ../converter/currencies.py:161
+msgid "Ugandan Schilling"
+msgstr ""
+
+#: ../converter/currencies.py:160
+msgid "Ukrainian Hryvnia"
+msgstr ""
+
+#: ../converter/currencies.py:113
+msgid "Unidad de Inversion (UDI)"
+msgstr ""
+
+#: ../converter/currencies.py:52
+msgid "Unidad de Valor Constante UVC"
+msgstr ""
+
+#: ../converter/currencies.py:39
+msgid "Unidades de fomento"
+msgstr ""
+
+#. Default: "Update"
+#: ../converter/browser/templates/currency_manager.pt:71
+msgid "Update"
+msgstr ""
+
+#. Default: "Updated on"
+#: ../converter/browser/templates/currency_converter_viewlet.pt:12
+msgid "Updated on"
+msgstr ""
+
+#: ../converter/currencies.py:166
+msgid "Uzbekistan Sum"
+msgstr ""
+
+#: ../converter/currencies.py:169
+msgid "Vanuatu Vatu"
+msgstr ""
+
+#: ../converter/currencies.py:167
+msgid "Venezuela Bolivar"
+msgstr ""
+
+#: ../converter/currencies.py:168
+msgid "Viet Nam Dong"
+msgstr ""
+
+#: ../converter/currencies.py:185
+msgid "Yemini Rial"
+msgstr ""
+
+#: ../converter/currencies.py:186
+msgid "Yugoslavian Dinar"
+msgstr ""
+
+#: ../converter/currencies.py:188
+msgid "Zambian Kwacha"
+msgstr ""
+
+#: ../converter/currencies.py:189
+msgid "Zimbabwe Dollar"
+msgstr ""
+
+#. Default: "There are no currency data available."
+#: ../converter/browser/templates/currency_converter_viewlet.pt:5
+msgid "no_currency_data_available"
+msgstr ""
+

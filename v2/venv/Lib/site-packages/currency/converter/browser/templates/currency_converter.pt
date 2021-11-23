@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="currency.converter">
+  <body>
+    <metal:main fill-slot="main">
+      <div tal:replace="structure provider:currency.converter.viewletManager" />
+      <h2 i18n:translate="">Currency Unit and Name List</h2>
+      <table class="listing">
+        <thead>
+          <tr>
+            <th i18n:translate="">Currency Unit</th>
+            <th i18n:translate="">Currency Name</th>
+          </tr>
+        </thead>
+        <tbody tal:repeat="currency view/currencies">
+          <tr class="even" tal:define="oddrow repeat/currency/odd;"
+              tal:attributes="class python:oddrow and 'even' or 'odd'">
+            <td tal:content="currency/code" />
+            <td tal:content="currency/name" />
+          </tr>
+        </tbody>
+      </table>
+    </metal:main>
+  </body>
+</html>

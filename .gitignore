@@ -1,2 +1,2 @@
 crypto
-v2/venv
+**/v2/venv/

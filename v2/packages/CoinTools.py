@@ -16,10 +16,18 @@ client = Client(api_key, api_secret)
 
 
 class CoinTools():
+    def checkExists(self, coin):
+        try:
+            client.get_symbol_ticker(symbol=coin+"USDT")
+            exists = True
+        except:
+            exists = False
+        return exists
 
     def getPrice(self, coin):
         price_dict = client.get_symbol_ticker(symbol=coin+"USDT")
-        return price_dict.get("price")
+        price = round(float(price_dict.get("price")),2)
+        return price
 
     def getBalance(self, coin):
         balance_dict = client.get_asset_balance(asset=coin)
@@ -63,6 +71,21 @@ class CoinTools():
         if option == "json":
             with open(coin+"_bars.json", 'w') as e:
                             json.dump(bars, e)
+
+    def getCurVal(self, coin, entry_price, entry_amount):
+        cur_val = round((entry_amount / entry_price) * float(self.getPrice(coin)),2)
+        return cur_val
+
+    def getPL(self, coin, entry_price, entry_amount):
+        cur_val = (entry_amount / entry_price) * float(self.getPrice(coin))
+        difference = round(cur_val - entry_amount,2)
+        return difference
+
+    def getPLPercent(self, coin, entry_price, entry_amount):
+        cur_val = (entry_amount / entry_price) * float(self.getPrice(coin))
+        difference = cur_val - entry_amount
+        percent_change = round((((difference)/ entry_amount) * 100),2)
+        return percent_change
 
 def main():
     coinPrompt = "Enter your coin symbol: "

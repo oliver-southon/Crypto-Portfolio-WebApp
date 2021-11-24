@@ -49,52 +49,30 @@
                         <th scope="col">Date</th>
                     </thead>
                     <tbody>
-                        {% for item in data %}
+                        {% for holding in holdings %}
                         <tr>
                             <td>
-                                <td><i class="bi bi-trash"></i></td>                            
+                                <a href="{{ url_for('delete_holding', id=holding[0]) }}" onclick="return confirm('Do you want to permanently delete holding {{ holding }}?');" title="Delete Merchant"><i class="bi bi-trash"></i></a>                         
                             </td>
-                            <th scope="row">{{item[0]}}</th>   
-                            <td><i class="bi bi-caret-up"></i></td>
-                            <td>$1030</td>
-                            <td>$30</td>
-                            <td>3.07%</td>
-                            <td>{{ item[1] }}</td>
-                            <td>31</td>
-                            <td>{{ item[2] }}</td>
-                            <td>{{ item[3] }}</td>
+                            <th scope="row">{{ holding[0] }}</th>   
+                            <td>
+                                {% if (holding[2] > 0) %}
+                                    <i class="bi bi-caret-up" style="color: lightgreen;"></i>
+                                {% else %} 
+                                    <i class="bi bi-caret-down" style="color: red;"></i>
+                                {% endif %}
+                            </td>
+                            <td>{{ holding[1] }}</td>
+                            <td>${{ holding[2] }}</td>
+                            <td>{{ holding[3] }}%</td>
+                            <td>{{ holding[4] }}</td>
+                            <td>{{ holding[5] }}</td>
+                            <td>{{ holding[6] }}</td>
+                            <td>{{ holding[7] }}</td>
                             <td>--</td>
-                            <td>{{ item[4] }}</td>
+                            <td>{{ holding[8] }}</td>
                         </tr>
                         {% endfor %}
-                        <!-- <tr>
-                            <td><i class="bi bi-trash"></i></td>
-                            <th scope="row">2</th>   
-                            <td><i class="bi bi-caret-up"></i></td>
-                            <td>$1030</td>
-                            <td>$30</td>
-                            <td>3.07%</td>
-                            <td>ThorChain (RUNE)</td>
-                            <td>31</td>
-                            <td>28.33</td>
-                            <td>1000</td>
-                            <td>--</td>
-                            <td>14/09/21</td>
-                        </tr>
-                        <tr>
-                            <td><i class="bi bi-trash"></i></td>
-                            <th scope="row">1</th>   
-                            <td><i class="bi bi-caret-down"></i></td>
-                            <td>$1030</td>
-                            <td>$30</td>
-                            <td>3.07%</td>
-                            <td>Solana (SOL)</td>
-                            <td>31</td>
-                            <td>28.33</td>
-                            <td>1000</td>
-                            <td>--</td>
-                            <td>14/09/21</td>
-                        </tr> -->
                     </tbody>
                 </table>
                 <!-- add holding to portfolio -->

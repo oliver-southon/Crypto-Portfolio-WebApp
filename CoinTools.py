@@ -14,7 +14,6 @@ client = Client(api_key, api_secret)
 # get account details
 # print(client.get_account()) 
 
-
 class CoinTools():
 
     def getPrice(self, coin):
@@ -48,6 +47,7 @@ class CoinTools():
             if short == True:
                 for line in bars:
                     del line[5:]
+                    print("8==D\nPenis")
             coin_df = pd.DataFrame(bars, columns=['date', 'open' , 'high', 'low', 'close'])
             coin_df.set_index('date', inplace=True)
             print(coin_df.head())
@@ -69,6 +69,7 @@ def main():
     shouldContinue = True
     coin = input(coinPrompt)
     while shouldContinue:
+        print("8===D\nYou just got penis\'d!")
         print("""
         -- {:s} --
 

@@ -15,6 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
  
+    {{ turbo() }}
   {% endblock %}
   {% block body %}
       <div class="container">
@@ -33,24 +34,19 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-10">
                 <div class="row">
-                    <div class="col" style="border-right: 1px dotted black;">
-                        <h2><i class='fab fa-bitcoin' style='font-size:48px;color:gold'></i><span class="heading-price"> ${{ BTC }}</span></h2>
-                    </div>
-
-                    <div class="col" style="border-right: 1px dotted black;">
-                        <h2><i class='fab fa-ethereum' style='font-size:48px;color:gray'></i><span class="heading-price"> ${{ ETH }}</span></h2>
-                    </div>
-                    
-                    <div class="col">
+               
+                    {% include "btc_eth.html" %}
+                   
+                    <div class="col-sm-4">
                         <div class="row">
                             <h4 style="text-align: center; font-size: 100%;">{{ fg_class }}</h4>
                         </div>
                         <div class="row">
-
+                
                         </div>
                         <div class="progress" style="background: linear-gradient(to right, red, yellow, green)">
                             <div class="progress-bar" role="progressbar" aria-valuenow="{{ fg_num }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ fg_num }}%; background-color:rgba(0, 0, 0, 0.3)"><span style="border-right: 3px solid black;">{{ fg_num }}%</span></div>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -120,15 +116,21 @@
                             <td>{{ holding[8] }}</td>
                         </tr>
                         {% endfor %}
+                        
                     </tbody>
                 </table>
+
+                {% if holdings %}   
+                <a href="{{ url_for('delete_all_holdings') }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Do you want to permanently remove all holdings from your portfolio?')"><i class="bi bi-x"></i> Clear All</a>
+                {% endif %}
+
                 <!-- add holding to portfolio -->
                 <div class="col text-center">
                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#newHolding" style="text-align: center;"><i class="bi bi-plus-lg"></i></button>
 
                     <div class="collapse" id="newHolding">
-                        <div class="card card-body" style="margin-top: 1%;">
-                            <form action="" method="POST" class="form" role="form">
+                        <div class="card card-body" style="margin-top: 1%; margin-bottom: 1%;">
+                            <form action="/" method="POST" class="form" role="form" target="_blank">
                                 {{ form.csrf_token() }}
                                 <div class="row">
                                     <div class="col">
@@ -143,7 +145,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <button type="subit" class="btn btn-primary" style="margin-top: 1%;">Submit</button>
+                                        <button type="submit" class="btn btn-primary" style="margin-top: 1%;">Submit</button>
                                     </div>
                                 </div>
                             </form>
@@ -172,6 +174,5 @@
       </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  
     {% endblock %}
 </html>

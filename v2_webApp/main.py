@@ -3,12 +3,15 @@ from flask import Flask, render_template, request, redirect
 from flask.helpers import url_for
 import requests
 from flask_bootstrap import Bootstrap
-import packages.CoinTools as ct
+import packages.crypto_compare_tools as cc
 from model import HoldingForm
 from datetime import date
 import sqlite3 as sql
 from flask_sqlalchemy import SQLAlchemy
-from packages.CoinTools import CoinTools 
+
+from turbo_flask import Turbo
+import threading
+import time
 
 # >1. CONFIGURATIONS
 app = Flask(__name__)
@@ -16,8 +19,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///trades.db'
 app.config['SECRET_KEY'] = str(os.environ.get('DB_DK'))
 Bootstrap(app)
 db = SQLAlchemy(app)
+turbo = Turbo(app)
 
-ct = CoinTools()
 
 # >2. DATABASE SETUP
 class Holding(db.Model):
@@ -42,8 +45,8 @@ class Prev_Holding(db.Model):
     def __repr__(self):
         return "<Symbol '{}'>\n<Entry_Price {}>\n<Close_Price {}>".format(self.symbol, str(self.entry_price), str(self.close_price))
 
-# >3. FLASK ROUTES
 
+# >3. FLASK ROUTES
 
 @app.route('/remove_prev,<int:prev_id>', methods=['POST', 'GET'])
 def remove_prev(prev_id):
@@ -58,10 +61,22 @@ def delete_holding(id):
     # npv = new previous holding
     print("naaa")
     htd = Holding.query.filter_by(holding_id=id).one()
-    db.session.add(Prev_Holding(symbol=htd.symbol, entry_price=htd.entry_price, entry_amt=htd.entry_amt, entry_date=htd.date, close_price=ct.getPrice(htd.symbol), close_date=date.today()))
+    db.session.add(Prev_Holding(symbol=htd.symbol, entry_price=htd.entry_price, entry_amt=htd.entry_amt, entry_date=htd.date, close_price=cc.get_price(htd.symbol), close_date=date.today()))
     Holding.query.filter_by(holding_id=id).delete()
     db.session.commit()
     return redirect(url_for('index'))
+
+@app.route('/delete_all_holdings', methods=['POST', 'GET'])
+def delete_all_holdings():
+    Holding.query.delete()
+    db.session.commit()
+    return redirect(url_for('index'))
+
+@app.route('/delete_all_prev_holdings', methods=['POST', 'GET'])
+def delete_all_prev_holdings():
+    Prev_Holding.query.delete()
+    db.session.commit()
+    return redirect(url_for('prev_trades'))
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -85,17 +100,17 @@ def index():
         display_data_row = []
         money_in += row.entry_amt
 
-        value = ct.getCurVal(row.symbol, row.entry_price, row.entry_amt)
-        pl = ct.getPL(row.symbol, row.entry_price, row.entry_amt)
+        value = cc.get_cur_val(row.symbol, row.entry_price, row.entry_amt)
+        pl = cc.get_PL(row.symbol, row.entry_price, row.entry_amt)
         cum_pl += pl
-        pl_percent = ct.getPLPercent(row.symbol, row.entry_price, row.entry_amt)
+        pl_percent = cc.get_PL_Percent(row.symbol, row.entry_price, row.entry_amt)
 
         display_data_row.append(row.holding_id) #               0 - INDEX NUMBER
         display_data_row.append(value) #                        1 - CUR VALUE
         display_data_row.append(pl) #                           2 - PL
         display_data_row.append(pl_percent) #                   3 - PL percent
         display_data_row.append(row.symbol) #                   4 - Coin Name
-        display_data_row.append(ct.getPrice(row.symbol)) #      5 - Current Price
+        display_data_row.append(cc.get_price(row.symbol)) #      5 - Current Price
         display_data_row.append(row.entry_price) #                6 - Entry Price
         display_data_row.append(row.entry_amt) #              7 - Entry Amt
         display_data_row.append(row.date) #                     8 - Date
@@ -103,9 +118,13 @@ def index():
         display_data.append(display_data_row)
         
 
-    BTC = f'{round(ct.getPrice("BTC"),2):,}'
-    ETH = f'{round(ct.getPrice("ETH"),2):,}'
-    cum_pl_perc = round((cum_pl / money_in) * 100)  
+    BTC = f'{round(cc.get_price("BTC"),2):,}'
+    ETH = f'{round(cc.get_price("ETH"),2):,}'
+
+    if money_in > 0:
+        cum_pl_perc = round((cum_pl / money_in) * 100)  
+    else:
+        cum_pl_perc = 0
 
     fg = requests.get("https://api.alternative.me/fng/").json().get("data")[0]
     fg_num = fg['value']
@@ -115,8 +134,8 @@ def index():
 
 @app.route('/prev_trades', methods=['POST', 'GET'])
 def prev_trades():
-    BTC = f'{round(ct.getPrice("BTC"),2):,}'
-    ETH = f'{round(ct.getPrice("ETH"),2):,}'
+    BTC = f'{round(cc.get_price("BTC"),2):,}'
+    ETH = f'{round(cc.get_price("ETH"),2):,}'
 
     fg = requests.get("https://api.alternative.me/fng/").json().get("data")[0]
     fg_num = fg['value']
@@ -152,6 +171,22 @@ def prev_trades():
 
 
     return render_template('prev_trades.html', BTC=BTC, ETH=ETH , prev_holdings=display_data_prev, cum_pl_prev=round(cum_pl_prev,2), cum_pl_perc_prev=round(cum_pl_perc_prev,2), fg_num=fg_num, fg_class=fg_class)
+
+@app.context_processor
+def inject_load():
+    BTC = f'{round(cc.get_price("BTC"),2):,}'
+    ETH = f'{round(cc.get_price("ETH"),2):,}'
+    return {'BTC': BTC, 'ETH': ETH}
+
+@app.before_first_request
+def before_first_request():
+    threading.Thread(target=update_load).start()
+
+def update_load():
+    with app.app_context():
+        while True:
+            time.sleep(5) # 5 seconds
+            turbo.push(turbo.replace(render_template('btc_eth.html'), 'load'))
 
 # >4. MAIN
 if __name__ == "__main__":

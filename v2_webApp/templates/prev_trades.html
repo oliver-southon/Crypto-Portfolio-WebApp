@@ -69,9 +69,9 @@
             </div>
             <div class="col-sm-10">
                 {% if cum_pl_prev > 0 %}
-                <h3 >Cumulative P/L: <span style="color: lightgreen;">${{ cum_pl_prev }} ({{ cum_pl_perc_prev }}%)</span></h3>
+                <h3 >Previous Cumulative P/L: <span style="color: lightgreen;">${{ cum_pl_prev }} ({{ cum_pl_perc_prev }}%)</span></h3>
                 {% else %}
-                <h3 >Cumulative P/L: <span style="color: red;">${{ cum_pl_prev }} ({{ cum_pl_perc_prev }}%)</span></h3>
+                <h3 >Previous Cumulative P/L: <span style="color: red;">${{ cum_pl_prev }} ({{ cum_pl_perc_prev }}%)</span></h3>
                 {% endif %}
             </div>
         </div>
@@ -125,14 +125,14 @@
                     </tbody>
                 </table>
             
+                {% if prev_holdings %}   
+                <a href="{{ url_for('delete_all_prev_holdings') }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Do you want to permanently remove all previous holdings from your portfolio?')"><i class="bi bi-x"></i> Clear All</a>
+                {% endif %}
             </div>
             <div class="col-sm-1"></div>
         </div>
 
-        <!-- HISTORY ROW -->
-        <div class="row">
-
-        </div>
+    
 
         <!-- FOOTER ROW -->
         <div class="row">

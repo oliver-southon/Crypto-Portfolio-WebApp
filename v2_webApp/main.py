@@ -9,9 +9,6 @@ from datetime import date
 import sqlite3 as sql
 from flask_sqlalchemy import SQLAlchemy
 
-from turbo_flask import Turbo
-import threading
-import time
 
 # >1. CONFIGURATIONS
 app = Flask(__name__)
@@ -19,7 +16,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///trades.db'
 app.config['SECRET_KEY'] = str(os.environ.get('DB_DK'))
 Bootstrap(app)
 db = SQLAlchemy(app)
-turbo = Turbo(app)
 
 
 # >2. DATABASE SETUP
@@ -28,7 +24,7 @@ class Holding(db.Model):
     symbol = db.Column(db.String(10), nullable=False)
     entry_price = db.Column(db.Float, nullable=False)
     entry_amt = db.Column(db.Float, nullable=False)
-    date = db.Column(db.DateTime)
+    date = db.Column(db.Date)
 
     def __repr__(self):
         return "<Symbol '{}'>\n<Entry_Price {}>".format(self.symbol, str(self.entry_price))
@@ -38,9 +34,9 @@ class Prev_Holding(db.Model):
     symbol = db.Column(db.String(10), nullable=False)
     entry_price = db.Column(db.Float, nullable=False)
     entry_amt = db.Column(db.Float, nullable=False)
-    entry_date = db.Column(db.DateTime)
+    entry_date = db.Column(db.Date)
     close_price = db.Column(db.Float, nullable=False)
-    close_date = db.Column(db.DateTime, nullable=False)
+    close_date = db.Column(db.Date, nullable=False)
 
     def __repr__(self):
         return "<Symbol '{}'>\n<Entry_Price {}>\n<Close_Price {}>".format(self.symbol, str(self.entry_price), str(self.close_price))
@@ -80,6 +76,8 @@ def delete_all_prev_holdings():
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
+
+    # Add new holding form
     form = HoldingForm()
     if form.validate_on_submit():
         sbl = form.symbol.data
@@ -91,6 +89,7 @@ def index():
         db.session.add(new_holding)
         db.session.commit()
     
+    # Display Portfolio In Organised Table
     data = Holding.query.order_by(Holding.date)
     display_data = []
     cum_pl = 0
@@ -117,15 +116,18 @@ def index():
 
         display_data.append(display_data_row)
         
-
+    # Display Top Row Values
+    #   -- BTC and ETH price
     BTC = f'{round(cc.get_price("BTC"),2):,}'
     ETH = f'{round(cc.get_price("ETH"),2):,}'
 
+    #   -- Cumulative PL
     if money_in > 0:
         cum_pl_perc = round((cum_pl / money_in) * 100)  
     else:
         cum_pl_perc = 0
 
+    #   -- Fear and Greed Index 
     fg = requests.get("https://api.alternative.me/fng/").json().get("data")[0]
     fg_num = fg['value']
     fg_class = fg['value_classification']
@@ -134,13 +136,17 @@ def index():
 
 @app.route('/prev_trades', methods=['POST', 'GET'])
 def prev_trades():
+    # Display Top Row Values
+    #   -- BTC and ETH price
     BTC = f'{round(cc.get_price("BTC"),2):,}'
     ETH = f'{round(cc.get_price("ETH"),2):,}'
 
+    #   -- Fear and Greed Index 
     fg = requests.get("https://api.alternative.me/fng/").json().get("data")[0]
     fg_num = fg['value']
     fg_class = fg['value_classification']
 
+    # Display Portfolio In Organised Table
     display_data_prev = []
     cum_pl_prev = 0
     cum_pl_perc_prev = 0
@@ -171,22 +177,6 @@ def prev_trades():
 
 
     return render_template('prev_trades.html', BTC=BTC, ETH=ETH , prev_holdings=display_data_prev, cum_pl_prev=round(cum_pl_prev,2), cum_pl_perc_prev=round(cum_pl_perc_prev,2), fg_num=fg_num, fg_class=fg_class)
-
-@app.context_processor
-def inject_load():
-    BTC = f'{round(cc.get_price("BTC"),2):,}'
-    ETH = f'{round(cc.get_price("ETH"),2):,}'
-    return {'BTC': BTC, 'ETH': ETH}
-
-@app.before_first_request
-def before_first_request():
-    threading.Thread(target=update_load).start()
-
-def update_load():
-    with app.app_context():
-        while True:
-            time.sleep(5) # 5 seconds
-            turbo.push(turbo.replace(render_template('btc_eth.html'), 'load'))
 
 # >4. MAIN
 if __name__ == "__main__":

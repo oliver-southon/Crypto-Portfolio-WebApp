@@ -1,0 +1,29 @@
+{% extends 'portfolio/base/base.html' %}
+{% load static %}
+
+{% block site_css %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'portfolio/styles/market_stats.css' %}">
+<link rel="stylesheet" href="{% static 'portfolio/styles/row_index.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <!-- STATS ROW -->
+    <div class="row pt-3">
+        {% include 'portfolio/includes/market_stats.html' %}
+    </div>
+    <!-- CUMULATION ROW -->
+    <div class="row pt-3">
+        {% include 'portfolio/includes/cumulative_current.html' %}
+    </div>
+    <!-- PREVIOUS PORTFOLIO ROW -->
+    <div class="row pt-3">
+        {% include 'portfolio/includes/portfolio_previous.html' %}
+    </div>
+</div>
+{% endblock %}
+
+
+

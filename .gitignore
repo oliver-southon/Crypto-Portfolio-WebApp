@@ -2,3 +2,7 @@ crypto
 **/v2_webApp/venv/
 **/v2_webApp/notes.txt
 **/v2_webApp/test_stuff.py
+**/v3_Django/db.sqlite3
+**/v3_Django/venv/
+**/v3_Django/todo.txt
+**/v3_Django/pass.txt

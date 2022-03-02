@@ -1,0 +1,110 @@
+{% extends 'portfolio/base/base.html' %}
+{% load static %}
+
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'portfolio/styles/market_stats.css' %}">
+<link rel="stylesheet" href="{% static 'portfolio/styles/row_index.css' %}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<style>
+	.ui-autocomplete {
+		max-height: 100px;
+		overflow-y: auto;
+		/* prevent horizontal scrollbar */
+		overflow-x: hidden;
+	}
+	/* IE 6 doesn't support max-height
+	 * we use height instead, but this forces the menu to always be this tall
+	 */
+	* html .ui-autocomplete {
+		height: 100px;
+	}
+</style>
+{% endblock %}
+
+{% block site_scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="https://code.jquery.ui.autocomplete.scroll.min.js"></script>
+
+<script>
+    $('#use_mv').change(function() {
+        if(this.checked) {
+            $('#exit-price').prop('disabled',true);
+        } else {
+            $('#exit-price').prop('disabled',false);
+        }
+    });
+</script>
+<script>
+    $('#use_mv_entry').change(function() {
+        if(this.checked) {
+            $('#entry-price').prop('disabled',true);
+            $('#entry-price').val(1)
+            $('#entry-price').css("color", "#e9ecef")
+        } else {
+            $('#entry-price').prop('disabled',false);
+        }
+    });
+</script>
+
+
+<script>
+    $( function() {
+      const availableTags = {{coin_list|safe}}
+      $( "#tags" ).autocomplete({
+        source: availableTags,
+
+        select: function (event, ui) {$(this).val(ui.item ? ui.item : " ");},
+
+        change: function (event, ui) {if (!ui.item) {this.value = '';}}
+      })});
+</script>
+
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <!-- STATS ROW -->
+    <div class="row pt-3">
+        {% include 'portfolio/includes/market_stats.html' %}
+    </div>
+
+    <div class="row pt-2">
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %} 
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>{{ error|escape }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <!-- CUMULATION ROW -->
+    <div class="row pt-3">
+        {% include 'portfolio/includes/cumulative_current.html' %}
+    </div>
+
+    <!-- PORTFOLIO ROW -->
+   
+    <div class="row pt-3">
+        {% include 'portfolio/includes/portfolio_current.html' %}
+    </div>
+
+    <!-- ADD HOLDING ROW -->
+    <div class="row pt-3">
+        {% include 'portfolio/includes/add_holding.html' %}
+    </div>
+
+    <!-- PREVIOUS HOLDINGS ROW -->
+    <div class="row pt-3">
+        {% include 'portfolio/includes/go_to_prev.html' %}
+    </div>
+</div>
+{% endblock %}
+
+
+

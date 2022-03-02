@@ -1,0 +1,88 @@
+{% load static %}
+<!-- MODAL -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tutorial</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- CAROUSEL -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+              <div class="carousel-indicators pb-2">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{% static 'portfolio/images/1a.png' %}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                    <h5>Add Holdings</h5>
+                    <p>You can add holdings to your portfolio by pressing the large plus button.</p><br>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'portfolio/images/1b.png' %}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                    <h5>Select A Coin</h5>
+                    <p>When selecting the coin name for your holding, use one that is automatically suggested in the dropdown.</p><br>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'portfolio/images/1c.png' %}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                    <h5>Tip!</h5>
+                    <p>If you're buying the coin in real-time, or just want to use the current market price, you can tick the option like so.</p><br>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'portfolio/images/1d.png' %}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                    <h5>Deleting a Holding</h5>
+                    <p>After adding your holdings, you can view real-time statistics on them. If you wish to remove one, press the trash icon on the left.</p><br>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'portfolio/images/1e.png' %}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                    <h5>Two Options To Delete</h5>
+                    <p>If you have exited your position, you can enter the price you sold at. If you just wish to delete it permenantly, you can do that too!</p><br>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'portfolio/images/1f.png' %}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                    <h5>Previous Trades</h5>
+                    <p>If you chose the option to 'sell' your holding, it will be added to your previous trades. Access it using the button at the bottom right.</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'portfolio/images/1g.png' %}" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                    <h5>Viewing Your Previous Trades</h5>
+                    <p>This will take you to your previous trades page. You can use this to track your cumulative gains/losses. This will remind you that you only lose money if you sell!</p>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>

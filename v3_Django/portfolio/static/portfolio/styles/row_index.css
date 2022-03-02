@@ -1,0 +1,8 @@
+body {
+    counter-reset: index;
+}
+
+.row-index:before {
+    counter-increment: index;
+    content: counter(index);
+}

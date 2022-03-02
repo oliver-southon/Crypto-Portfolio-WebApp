@@ -1,0 +1,55 @@
+<div class="modal fade" id="modal{{ row.dbID }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">   >>> Did you sell this item?</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-check-square"></i> Yes - add to my previous holdings</button>
+                    </div>
+                    <div class="col">
+                            <a href="{% url 'delete-previous-holding' row.dbID %}" onclick="return confirm('Do you want to permanently remove {{ row.id }} from your portfolio?')" class="btn btn-secondary" role="button"><i class="bi bi-x-square"></i> No - delete permanently</a>        
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="collapse" id="collapseExample">
+                        <form class="form" action="{% url 'delete-holding' %}" method="POST" role="form">
+                            {% csrf_token %}
+                                <div class="input-group">
+                                    <div class="row pt-3">
+                                        <input type="hidden" value="{{ row.dbID }}" name="pk">
+                                        <div class="col-sm-1">
+                                        <label for="exit-price" class="col-form-label text-dark">
+                                            <i class="bi bi-arrow-return-right"></i>
+                                        </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                        <input type="number" class="form-control" placeholder="Price when sold" name="exit-price" id="exit-price">
+                                        </div>
+                                        <div class="col-sm-2 ms-3">
+                                            <div class="input-group-button">
+                                                <button type="submit" class="btn btn-success"><i class="bi bi-check2"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                    </div>
+                                    <div class="row pt-1">
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-sm-11">
+                                            <input type="checkbox" name="use_mv" value="use_mv" id="use_mv">
+                                            <label for="use_mv">Use current market price</label>
+                                        </div>
+                                    </div>
+                                </div>  
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="col text-center" style="border-right: 1px dotted grey;">
+    <h2 id="btc"><i class='fab fa-bitcoin'></i><span class="heading-price"> ${{ BTC }}</span></h2>
+</div>
+
+<div class="col text-center" style="border-right: 1px dotted grey;">
+    <h2 id="eth"><i class='fab fa-ethereum'></i><span class="heading-price"> ${{ ETH }}</span></h2>
+</div>
+
+<div class="col text-center">
+    <div class="row" id="small-fg">
+        <h2>{{ FG }}</h2>
+    </div>
+    <div class="row">
+        <h4 style="font-size: 100%;">{{ FG_class }}</h4>
+    </div>
+    
+    <div class="progress" style="background: linear-gradient(to right, red, yellow, green)">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{ FG }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ FG }}%; background-color:rgba(0, 0, 0, 0.3)"><span style="border-right: 3px solid black;">{{ FG }}%</span></div>
+        </div>
+</div>
+<hr>
+
+
+

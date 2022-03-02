@@ -1,0 +1,54 @@
+<div class="col-sm-1 d-sm-none d-md-block">
+</div>
+    <div class="col">
+        <!-- display portfolio -->
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover">
+                <thead>
+                    <th scope="col"></th>
+                    <th scope="col">#</th>
+                    <th scope="col"></th>
+                    <th scope="col">Coin Name</th>
+                    <th scope="col">Sold Value</th>
+                    <th scope="col">P/L</th>
+                    <th scope="col">Sold Price</th>
+                    <th scope="col">Entry Price</th>
+                    <th scope="col">Entry Amt</th>
+                    <th scope="col">Entry Date</th>
+                    <th scope="col">Exit Date</th>
+                </thead>
+                <tbody>
+                    {% for row in previous_portfolio.previous_positions %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'delete-previous-holding' row.dbID %}" onclick="return confirm('Do you want to permanently remove {{row.symbol}} from your portfolio?')" class="link-light"><i class="bi bi-trash"></i></a>                         
+                            </td>
+                            <th scope="row" class="row-index"></th>   
+                            <td>
+                                {% if row.value_sold > row.entry_amount %}
+                                    <i class="bi bi-caret-up" style="color: lightgreen;"></i>
+                                {% elif row.value_sold < row.entry_amount %} 
+                                    <i class="bi bi-caret-down" style="color: red;"></i>
+                                {% else %}
+                                    <i class="bi bi-dash-square" style="color: white"></i>
+                                {% endif %}
+                            </td>
+                            <td style="font-weight: 500;">{{ row.coin_id }} ({{ row.symbol }})</td>
+                            <td>${{ row.value_sold }}</td>
+                            <td>{{ row.pl }} {{ row.pl_percent }}%</td>
+                            <td>{{ row.exit_price }}</td>
+                            <td>{{ row.entry_price }}</td>
+                            <td>{{ row.entry_amount }}</td>
+                            <td>{{ row.date|date:"SHORT_DATE_FORMAT" }}</td>
+                            <td>{{ row.exit_date|date:"SHORT_DATE_FORMAT" }}</td>
+                        </tr>
+                    {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+<div class="col-sm-1 d-sm-none d-md-block">
+</div>
+
+

@@ -1,0 +1,16 @@
+<div class="col-sm-1">
+    {% if current %}
+        <a href="{% url 'holdings' %}" id="refresh"><button class="btn btn-light"><i class="bi bi-arrow-clockwise"></i></button></a>
+    {% else %}
+        <a href="{% url 'holdings' %}" class="btn btn-outline-info" style="font-size: 80%;"><i class="bi bi-arrow-bar-left"></i> Back</a>
+    {% endif %}
+</div>
+<div class="col-sm-11">
+    {% if stance == "up" %}
+        <h3>Value -- $<span class="text-decoration-underline">{{ cum_val }}</span> | P/L: <span style="color: lightgreen;">${{ cum_pl }} ({{ cum_pl_perc }}%)</span></h3>
+    {% elif stance == "down" %}
+        <h3>Value -- $<span class="text-decoration-underline">{{ cum_val }}</span> | P/L: <span style="color: red;">${{ cum_pl }} ({{ cum_pl_perc }}%)</span></h3>
+    {% else %}
+        <h3>Value -- $<span class="text-decoration-underline">{{ cum_val }}</span> | P/L: <span style="color: whitesmoke;">${{ cum_pl }} ({{ cum_pl_perc }}%)</span></h3>
+    {% endif %}
+</div>

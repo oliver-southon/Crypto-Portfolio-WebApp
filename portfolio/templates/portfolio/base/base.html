@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head class="d-flex flex-column h-100">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio Tracker{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'portfolio/styles/modal_stuff.css' %}">   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    {% block site_css %}{% endblock %}
+</head>
+<body class="d-flex flex-column min-vh-100 bg-dark">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand mb-0 h1" href="{% url 'user-portfolio' %}">Crypto Tracker</a>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="mailto:oliver.businesses@gmail.com">
+                    <i class="bi bi-envelope-fill"></i> Contact
+                </a>
+            </li>
+
+            {% if user.is_authenticated %}
+              <li class="nav-item ms-2">
+                <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">
+                    <i class="bi bi-person-circle"></i> Logout
+                </a>
+              </li>
+            {% else %}
+              <li class="nav-item ms-2">
+                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">
+                  <i class="bi bi-person-circle"></i> Login
+                </a>
+              </li>
+              <li class="nav-item ms-2">
+                <a class="nav-link active" aria-current="page" href="{% url 'register' %}">
+                  <i class="bi bi-pencil-square"></i> Register
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  
+    <!-- MAIN -->
+    <main class="bg-dark text-light p-5">
+    {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+    {% endif %}
+    {% block main %}{% endblock %}
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="mt-auto bg-dark text-light">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="nav-item nav-link text-center link-light" href="https://ko-fi.com/olivercodes" title="donate"><i class="bi bi-cup-fill" style="color:lightslategray"></i> Buy me a coffee</a>
+          <h3><a class="nav-item nav-link align-self-end font-size-lg link-light" href="https://github.com/oliver-southon/Crypto-Portfolio-WebApp"><i class="bi bi-github"></i></a></h3>
+        </div>
+      </nav>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% block site_scripts %}
+
+{% endblock %}
+</body>
+</html>
+

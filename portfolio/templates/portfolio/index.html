@@ -1,0 +1,46 @@
+{% extends 'portfolio/base/base.html' %}
+{% load static %}
+
+{% block site_css %}
+<style>
+  .carousel-item img {
+    border: 1px solid white;
+  }
+
+  .carousel-caption {
+    position: relative;
+    background-color: dimgray;
+    border: 1px solid white;
+    left: auto;
+    right: auto;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+<!-- HEADER ROW -->
+<div class="container-fluid p-4">
+  <div class="row pt-5 d-flex align-items-center">
+    
+    <div class="col-sm-6 mb-4">
+      <h1 class="display-5 fw-bold">Your Crypto Hub</h1>
+      <p class="lead">Track all your cryptocurrency holdings and positions in one place. By creating an account, you can track your portfolio with live data updates on your positions - including profit, loss, cumulative gains and much more!</p>
+  
+        {% if user.is_authenticated %}
+          <a href="{% url 'holdings' %}"><button type="button" class="btn btn-primary btn-lg px-4 mb-2 me-md-2">Go to holdings</button></a>
+        {% else %}
+          <a href="{% url 'register' %}"><button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Register for free</button></a>
+        {% endif %}
+        <button type="button" class="btn btn-outline-light btn-lg px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Learn More</button>
+        {% include 'portfolio/includes/modal-carousel.html' %}
+        
+    
+    </div>
+    <div class="col-sm-6">
+      <img src="{% static 'portfolio/images/attempt3.png' %}" class="img-fluid border border-3 border-white" alt="Template" loading="lazy">
+    </div>
+  </div>
+</div>
+  
+
+{% endblock %}

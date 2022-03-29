@@ -1,0 +1,38 @@
+.heading-price {
+    font-size: larger;
+    font-weight: 100;
+    vertical-align: 6%;
+}
+
+.FandG {
+    height: 25%;
+    padding: 0;
+    margin: 0;
+}
+
+#small-fg {
+    display: none;
+}
+
+.fab {
+    font-size: 48px;
+}
+
+.fa-ethereum {
+    color: gray;
+}
+
+.fa-bitcoin {
+    color: gold;
+}
+
+
+@media (max-width: 768px) {
+    .progress-bar { display: none; }
+    .progress { display: none; }
+    #small-fg { display: inline-block; }
+    #refresh { display: none; }
+    /* .fab { font-size: 140%; }
+    #eth { font-size: 140%; }
+    #btc { font-size: 140%; } */
+}

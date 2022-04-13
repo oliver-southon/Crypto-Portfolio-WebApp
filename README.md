@@ -9,7 +9,7 @@ CURRENT VERSION: V3 - uses Django and CoinGecko API to create an interactive por
 5. In that file, add the line:
         SECRET_KEY = "12345"
         
-        ("12345" is just a placeholder. Put whatever you like
+        ("12345" is just a placeholder. Put whatever you like)
 6. Run _py manage.py migrate_
 7. Run _py manage.py runserver_
   

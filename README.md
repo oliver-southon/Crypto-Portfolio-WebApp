@@ -14,3 +14,6 @@ CURRENT VERSION: V3 - uses Django and CoinGecko API to create an interactive por
 7. Run _py manage.py runserver_
   
   And that should work!
+
+DEMO VIDEO:
+https://drive.google.com/file/d/1quYGwhPcKLkSpPMn36mRcY5vQwJzgTv1/view?usp=sharing

@@ -15,5 +15,9 @@ CURRENT VERSION: V3 - uses Django and CoinGecko API to create an interactive por
   
   And that should work!
 
-DEMO VIDEO:
-https://drive.google.com/file/d/1quYGwhPcKLkSpPMn36mRcY5vQwJzgTv1/view?usp=sharing
+
+
+<h2>Demonstration Video:</h2>
+
+https://user-images.githubusercontent.com/50506698/163677829-2366f562-7650-45d8-8e8c-d64d17a9307a.mp4
+

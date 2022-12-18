@@ -1,7 +1,10 @@
 # Crypto-Portfolio-WebApp
 CURRENT VERSION: V3 - uses Django and CoinGecko API to create an interactive portoflio app with live data and user-based authentication system.
 
-**INSTRUCTIONS TO DEPLOY LOCALLY:**
+**YOU CAN ACESS IT HERE**
+https://web-production-84cd.up.railway.app/portfolio/holdings/
+
+**ALTERNATIVELY, YOU CAN RUN IT LOCALLY LIKE SO**
 1. Clone the repo into your desired directory
 2. Create a virtual environment and activate it
 3. Run _pip install -r requirements.txt_

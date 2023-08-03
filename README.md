@@ -2,7 +2,8 @@
 CURRENT VERSION: V3 - uses Django and CoinGecko API to create an interactive portoflio app with live data and user-based authentication system.
 
 **YOU CAN ACESS IT HERE**
-https://web-production-84cd.up.railway.app/portfolio/
+~~https://web-production-84cd.up.railway.app/portfolio/~~
+unavailable due to changes in Railway Hosting
 
 **ALTERNATIVELY, YOU CAN RUN IT LOCALLY LIKE SO**
 1. Clone the repo into your desired directory
